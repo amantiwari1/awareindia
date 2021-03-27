@@ -93,7 +93,6 @@ const userActionCreator: UserActionCreator = {
                     dispatch({
                         type: AUTHENTICATE_SUCCESS,
                         user: json.user,
-                        notifications: json.notifications,
                         others: json.others
                     });
                 } else {
@@ -117,7 +116,6 @@ const userActionCreator: UserActionCreator = {
                     dispatch({
                         type: LOGIN_SUCCESS,
                         user: response.user,
-                        notifications: response.notifications,
                         others: response.others
                     });
                     return localStorage().setItem(ACCESS_TOKEN_KEY, response.accessToken);
@@ -231,15 +229,11 @@ const userActionCreator: UserActionCreator = {
     signUp(email: string, password: string, confirmPassword: string, name: string, gender: Gender, invitationCode?: string): any {
         return (dispatch: Dispatch<any>): void => {
             dispatch({ type: USER_REQUEST_START});
-            const preferences: Preferences = DEFAULT_PREFERENCES;
             fetch("/oauth2/signup", {
                 email,
                 password,
                 confirmPassword,
                 name,
-                gender,
-                preferences,
-                invitationCode
             }, "POST")
             .then((redirectTask: RedirectTask) => {
                 dispatch({

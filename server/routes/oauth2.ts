@@ -4,7 +4,6 @@ import express, { Router } from "express";
 import * as controllers from "../controllers/oauth2";
 import { check, query } from "express-validator";
 import passport = require("passport");
-import Gender from "../../client/src/models/Gender";
 import EditorType from "../../client/src/models/EditorType";
 import { PASSWORD_MIN_LENGTH, FLAG_ENABLE_INVITATION_CODE } from "../../client/src/shared/constants";
 const oauth2: Router = express.Router();
@@ -19,9 +18,7 @@ oauth2.route("/signup").post(
             .exists()
             .custom((value, { req }) => value === req.body.password),
         check("name", "toast.user.name").not().isEmpty(),
-        check("gender", "toast.user.gender").isIn(Object.values(Gender))
     ],
-    FLAG_ENABLE_INVITATION_CODE ? check("invitationCode", "toast.user.invitation_code.empty").not().isEmpty() : [],
     controllers.signUp
 );
 oauth2.route("/login").post(
@@ -30,24 +27,7 @@ oauth2.route("/login").post(
         check("password", "toast.user.password_empty").not().isEmpty(),
     ],
     controllers.logIn);
-oauth2.route("/profile")
-    .get(
-        passport.authenticate("bearer", { session: false }),
-        controllers.profile)
-    .post(
-        passport.authenticate("bearer", { session: false }),
-        [
-            check("email", "toast.user.attack_alert")
-                .exists()
-                .custom((value, { req }) => value === req.user.email),
-            check("_id", "toast.user.attack_alert")
-                .exists()
-                .custom((value, { req }) => value === req.user._id.toString()),
-            check("name", "toast.user.name").not().isEmpty(),
-            check("gender", "toast.user.gender").isIn(Object.values(Gender))
-        ],
-        controllers.updateProfile
-    );
+
 oauth2.route("/preferences")
     .post(
         passport.authenticate("bearer", { session: false }),
