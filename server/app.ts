@@ -114,9 +114,7 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
-// Primary app routes.
-app.use("/auth", auth); // Auth client routes
-app.use("/oauth2", oauth2); // OAuth2 server routes
+// Primary app routes. // OAuth2 server routes
 app.use("/api/version", version); // version indicator
 // Add more routes like "/api/***" here
 
