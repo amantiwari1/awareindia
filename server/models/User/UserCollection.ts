@@ -1,50 +1,41 @@
-import bcrypt from "bcrypt-nodejs";
+import bcrypt from "bcrypt";
 import mongoose, { Model, Schema } from "mongoose";
-import UserDocument, { ComparePasswordFunction } from "./UserDocument";
-export const userSchema: Schema = new mongoose.Schema({
+import UserDocument from "./UserDocument";
+export const userSchema: Schema = new mongoose.Schema(
+  {
     email: { type: String, unique: true },
     password: String,
     name: { type: String },
-    OTP: String,
-    otpExpireTime: Date,
-}, { timestamps: true });
+  },
+  { timestamps: true }
+);
 
 /**
  * Password hashing & Signing Url middleware.
  */
-userSchema.pre("save", function save(next: any) {
-    const user: any = this;
-    // email cannot have capital character
-    if (user && user.email) {
-        user.email = user.email.toLowerCase();
-    }
-    // Stripe signing params for Avatar Url
-    
-    if (!user.isModified("password")) {
-        return next();
-    }
-    bcrypt.genSalt(10, (err: any, salt: any) => {
-        if (err) { return next(err); }
-            // tslint:disable-next-line:no-null-keyword
-            bcrypt.hash(user.password as string, salt, null, (err: mongoose.Error, hash: any) => {
-            if (err) {
-                return next(err);
-            }
-            user.password = hash;
-            next();
-        });
-    });
+userSchema.pre<UserDocument>("save", async function (next) {
+  const user = this;
+
+  if (!user.isModified("password")) return next();
+
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(user.password, salt);
+  user.password = hash;
+
+  next();
 });
 
-
-
-const comparePassword: ComparePasswordFunction = function (this: any, candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, (err: mongoose.Error, isMatch: boolean) => {
-        cb(err, isMatch);
-    });
+userSchema.methods.comparePassword = async function (
+  password: string
+): Promise<Boolean> {
+  return await bcrypt.compare(password, this.password);
 };
 
-userSchema.methods.comparePassword = comparePassword;
+userSchema.methods.comparePassword = async function (
+  password: string
+): Promise<Boolean> {
+  return await bcrypt.compare(password, this.password);
+};
 
 const UserCollection: Model<UserDocument> = mongoose.model("User", userSchema);
 export default UserCollection;
