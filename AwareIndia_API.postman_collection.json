@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3001/api/",
+					"raw": "http://localhost:3001/api/version",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -19,7 +19,7 @@
 					"port": "3001",
 					"path": [
 						"api",
-						""
+						"version"
 					]
 				},
 				"description": "it is version"
@@ -27,13 +27,13 @@
 			"response": []
 		},
 		{
-			"name": "/oauth2/signup",
+			"name": "Sign up api",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"12345678\",\r\n    \"confirmPassword\": \"12345678\",\r\n    \"name\": \"somename\"\r\n}",
+					"raw": "{\r\n    \"name\": \"AMAN TIWARI\",\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"123456789\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,27 +41,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/oauth2/signup",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"oauth2",
-						"signup"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/auth/oauth2",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3001/auth/oauth2",
+					"raw": "http://localhost:3001/auth/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -69,7 +49,36 @@
 					"port": "3001",
 					"path": [
 						"auth",
-						"oauth2"
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"signin"
 					]
 				}
 			},
