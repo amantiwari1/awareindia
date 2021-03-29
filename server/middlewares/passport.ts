@@ -1,21 +1,20 @@
 import { Strategy, ExtractJwt, StrategyOptions } from "passport-jwt";
 import config from "../config/config";
-import User from "../models/user";
+import UserCollection from "../models/User/UserCollection";
 
 const opts: StrategyOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: config.jwtSecret,
 };
-
 export default new Strategy(opts, async (payload, done) => {
-  const user = await User.findById(payload.id);
+  const user = await UserCollection.findById(payload.id);
 
   try {
     if (user) {
-      return done(null, user);
+      return done(undefined, user);
     }
 
-    return done(null, false);
+    return done(undefined, false);
   } catch (error) {
     console.log(error);
   }
