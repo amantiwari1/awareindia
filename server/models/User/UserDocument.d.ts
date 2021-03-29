@@ -1,13 +1,6 @@
 import mongoose from "mongoose";
 import User from "../../../client/src/models/User.d";
 export default interface UserDocument extends User, mongoose.Document {
-    comparePassword: ComparePasswordFunction;
-    OTP?: string;
-    otpExpireTime?: Date;
-    invitationCode?: string;
+    comparePassword: (password: string) => Promise<Boolean>
 }
-// TODO: Using Promise
-export type ComparePasswordFunction = (
-    candidatePassword: string,
-    cb: (err: mongoose.Error, isMatch: boolean) => void
-) => void;
+
