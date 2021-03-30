@@ -17,7 +17,6 @@ import { Response, Request, NextFunction } from "express";
 import auth from "./routes/auth.routes";
 
 // API keys and Passport configuration
-import "./config/passport-consumer";
 import version from "./routes/version";
 
 // Connect to MongoDB
