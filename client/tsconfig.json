@@ -18,9 +18,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "isolatedModules": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "jsxImportSource": "@emotion/react"
   },
   "include": [
-    "src"
+    "src",
+    "twin.d.ts"
   ]
 }
