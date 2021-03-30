@@ -1,1 +1,5 @@
-export default interface AppState {}
+export default interface AppState {
+    theme: { 
+        theme: string;
+    }
+}
