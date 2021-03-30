@@ -1,8 +1,5 @@
 import { combineReducers } from "redux";
-import themeState from './theme';
 
-const reducer = combineReducers({
-    theme: themeState
-});
+const reducer = combineReducers({});
 
 export default reducer;
