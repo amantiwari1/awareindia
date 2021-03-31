@@ -3,8 +3,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        electric: '#db00ff',
-        ribbon: '#0047ff',
+        darkmode: '#0d1117',
+        darknav: '#161b22',
+        darkmode2: '#21262d',
+        lightnav: '#24292e',
+        lightmode: '#fff',
       },
     },
   },
