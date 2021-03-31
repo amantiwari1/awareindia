@@ -12,7 +12,7 @@ const customStyles = css`
         font-family: 'Source Sans Pro', sans-serif;
   }
   body {
-    ${tw`bg-white dark:bg-black transition-all`}
+    ${tw`bg-lightmode dark:(bg-darkmode text-white) transition-all`}
   }
 ` 
 
