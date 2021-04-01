@@ -1,32 +1,32 @@
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line
 import tw from 'twin.macro'
+import { Link } from 'react-router-dom'
 import Details from './Details'
+import { PeopleCardInterface } from './PeopleInterface'
 
-const PeopleCard = () => {
+const PeopleCard = ({ name, imageUrl, job }: PeopleCardInterface) => {
     return (
-        <figure tw=" rounded-xl mx-auto p-2  grid grid-rows-2  gap-4 justify-center shadow-md hover:(shadow-lg) dark:(bg-darkmode2)" >
+        <figure tw=" rounded-xl mx-auto pt-5 bg-gray-50 w-full grid h-64 grid-rows-2 justify-center shadow-md hover:(shadow-lg) dark:(bg-darkmode2)" >
             <div tw="mx-auto space-y-3" >
-                <img alt="profile" tw=" h-16 mx-auto rounded-full" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/The_Prime_Minister%2C_Shri_Narendra_Modi_addressing_at_the_webinar_for_effective_implementation_of_Union_Budget_in_Defence_Sector.jpg/800px-The_Prime_Minister%2C_Shri_Narendra_Modi_addressing_at_the_webinar_for_effective_implementation_of_Union_Budget_in_Defence_Sector.jpg" />
-                <p tw="" >Narendra Modi</p>
+                <img alt="profile" tw=" h-16 mx-auto rounded-full" src={imageUrl} />
+                <p tw="" >{name}</p>
             </div>
-            <div tw="" >
-                <Details
-                    name="Born"
-                    value="17 September 1950 (age 70)"
-                />
-                <Details
-                    name="Political party"
-                    value="Bharatiya Janata Party"
-                />
-                <Details
-                    name="Qualification"
-                    value="None"
-                />
-                <Details
-                    name="State"
-                    value="Gujarat"
-                />
+            <div tw="-mb-1!" >
+                <div tw="mb-3" >
+                    <Details
+                        name="Party"
+                        value={job}
+                    />
+
+                </div>
+
+                <div tw="justify-center block text-center mt-5" >
+                    <Link to="/SinglePeopleInfo" tw=" bg-gray-50  p-2  rounded-lg border border-gray-200  dark:(border border-gray-700 bg-darkmode2  hover:( border-gray-500 bg-gray-700)) hover:(bg-gray-100)" >
+                        Tap to More Details
+                </Link>
+                </div>
+
             </div>
 
         </figure>
