@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import { Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import PeopleRank from './pages/PeopleRank';
+import SinglePeopleInfo from './templates/SinglePeopleInfo'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/"  component={Home}  />
         <Route exact path="/peoplerank"  component={PeopleRank}  />
+        <Route exact path="/SinglePeopleInfo"  component={SinglePeopleInfo}  />
       </Switch>
     </ThemeProvider>
   );
