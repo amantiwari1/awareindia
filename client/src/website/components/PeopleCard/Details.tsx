@@ -5,8 +5,8 @@ import {DetailsInterface} from "./PeopleInterface"
 
 const Details = ( {name, value} : DetailsInterface) => {
     return (
-        <div tw="flex text-sm" >
-            <p>{name} :</p><p> {value}</p>
+        <div tw="flex text-center text-sm" >
+            <p>{value}</p>
         </div>
     )
 }
