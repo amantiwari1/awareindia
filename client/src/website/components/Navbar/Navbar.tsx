@@ -15,7 +15,7 @@ const Navbar = () => {
     const [menu, setMenu] = useState(false)
     const onClick = () => setMenu(!menu);
     return (
-        <nav tw=" top-0 p-1 bg-lightnav space-y-1 text-center items-center h-12 md:( flex space-y-0 justify-between)   dark:(bg-darknav)" >
+        <nav tw=" top-0 p-1 bg-lightnav space-y-1 text-center items-center h-14 md:( flex space-y-0 justify-between)   dark:(bg-darknav)" >
             <div tw="flex justify-between items-center" >
                 <Toggle tw="items-center pt-4" />
                 <GiHamburgerMenu onClick={onClick} tw="text-white text-2xl md:(hidden) mr-2 cursor-pointer" />
@@ -23,11 +23,39 @@ const Navbar = () => {
             <div css={[menu ? tw`left-0 ` : tw`-left-full`]} tw=" fixed transition-all  bg-lightnav w-screen h-screen space-y-10 md:(static flex h-auto space-y-0 w-auto) dark:(bg-darknav )" >
                 <NavItems onClick={onClick} to="/" >Home</NavItems>
                 <DropdownTwin
-                    onTurnNav={onClick} 
+                    onTurnNav={onClick}
                     name="Rank"
                     navitems={[{
                         name: "People",
                         to: "/peoplerank"
+                    }]}
+                />
+                <DropdownTwin
+                    onTurnNav={onClick}
+                    name="Source"
+                    navitems={[{
+                        name: "List of Govt Website",
+                        to: "/listofgovtwebsite"
+                    }]}
+                />
+                <DropdownTwin
+                    onTurnNav={onClick}
+                    name="Infrastructure"
+                    navitems={[{
+                        name: "School",
+                        to: "/school"
+                    }, {
+                        name: "Hospital",
+                        to: "/hospital"
+                    }, {
+                        name: "Road",
+                        to: "/road"
+                    }, {
+                        name: "Fly over",
+                        to: "/flyover"
+                    }, {
+                        name: "Metro",
+                        to: "/metro"
                     }]}
                 />
             </div>
