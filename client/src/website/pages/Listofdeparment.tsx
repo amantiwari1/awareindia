@@ -2,9 +2,9 @@
 // eslint-disable-next-line
 import tw from 'twin.macro'
 import WebsiteCard from '../components/WebsiteCard/WebsiteCard'
-import ListofWebsiteData from "../../data/listofwebsite.json"
+import ListofWebsiteData from "../../data/listofdeparmentwebiste.json"
 
-const ListofWebsite = () => {
+const Listofdeparment = () => {
     return (
         <div tw="container mx-auto space-y-2 p-3" >
             {
@@ -19,4 +19,4 @@ const ListofWebsite = () => {
     )
 }
 
-export default ListofWebsite
+export default Listofdeparment
