@@ -48,13 +48,13 @@ const DropdownTwin = ({ name, navitems, onTurnNav }: DropdownInterface): JSX.Ele
         </div>
 
         {isActive &&
-          <div ref={dropdownRef} tw=" z-20 origin-bottom-right absolute right-0 mt-1 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dark:(bg-darkmode2 border-blue-50)" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+          <div ref={dropdownRef} tw=" z-20 origin-bottom-right absolute -right-4 mt-1  rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dark:(bg-darkmode2 border-blue-50)" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
 
             {
               navitems.map((navitem, index) => (
                 <div tw="py-1" role="none" key={index}>
 
-                  <Link onClick={() => { onClick(); onTurnNav() }} to={navitem.to} tw="block px-4 py-2 text-sm text-gray-700 hover:(bg-blue-700 text-white) dark:(text-white hover:(bg-blue-700 text-white))" role="menuitem">{navitem.name}</Link>
+                  <Link onClick={() => { onClick(); onTurnNav() }} to={navitem.to} tw=" block px-4 py-2  whitespace-nowrap text-sm text-gray-700 hover:(bg-blue-700 text-white) dark:(text-white hover:(bg-blue-700 text-white))" role="menuitem">{navitem.name}</Link>
                 </div>
               ))
             }
