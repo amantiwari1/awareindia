@@ -15,7 +15,7 @@ const Navbar = () => {
     const [menu, setMenu] = useState(false)
     const onClick = () => setMenu(!menu);
     return (
-        <nav tw=" top-0 p-1 bg-lightnav space-y-1 text-center items-center h-14 md:( flex space-y-0 justify-between)   dark:(bg-darknav)" >
+        <nav tw=" top-0 p-1 md:px-10 bg-lightnav space-y-1 text-center items-center h-14 md:( flex space-y-0 justify-between)   dark:(bg-darknav)" >
             <div tw="flex justify-between items-center" >
                 <Toggle tw="items-center pt-4" />
                 <GiHamburgerMenu onClick={onClick} tw="text-white text-2xl md:(hidden) mr-2 cursor-pointer" />
@@ -32,10 +32,13 @@ const Navbar = () => {
                 />
                 <DropdownTwin
                     onTurnNav={onClick}
-                    name="Source"
+                    name="Website"
                     navitems={[{
-                        name: "List of Govt Website",
+                        name: "Govt State Website",
                         to: "/listofgovtwebsite"
+                    }, {
+                        name: "Ministers/Departments Website",
+                        to: "/listofdeparment"
                     }]}
                 />
                 <DropdownTwin
